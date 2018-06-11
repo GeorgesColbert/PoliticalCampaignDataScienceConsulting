@@ -1,0 +1,428 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+
+```{r echo=FALSE}
+library(twitteR)
+library(wordcloud)
+library(tm)
+library(SnowballC)
+library(readr)
+ library(dplyr)
+
+
+ #VA.tweetdf <- read_csv("/Users/georgesericcolbert/Stew.tweetdf.28.03.csv")
+ #VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.27.2.csv")
+ VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.03.10.csv")
+
+ 
+```
+
+
+
+```{r }
+ 
+ 
+ ##### How many are retweets?
+ 
+ table(VA.tweetdf$isRetweet)
+
+```
+
+
+### list of top 6 favorite retweet
+
+```{r echo=FALSE}
+
+### lis of top 6 favorite tweets by Corey
+
+ ### other than from coreystewart's account, most favorited 
+  #temp <- filter(VA.tweetdf, screenName == 'NickForVA')
+  temp <- VA.tweetdf[order(VA.tweetdf$favoriteCount, decreasing=TRUE),]
+
+   
+
+ I <-  head(select(temp,text,favoriteCount,created,screenName))
+    
+
+
+as.data.frame(I)
+
+ 
+```
+
+## other than from NickForVa account, most favorited
+
+```{r echo=FALSE}
+ ### other than from coreystewart's account, most favorited 
+
+
+  #temp <- filter(VA.tweetdf, screenName != 'NickForVA')
+  #temp <- temp[order(temp$favoriteCount, decreasing=TRUE),]
+  #I <-  head(select(temp,text,favoriteCount,created,screenName))
+  
+#as.data.frame(I)
+
+
+```
+
+
+# top 6 retweeted tweet
+
+```{r echo=FALSE}
+
+### lis of top 6 favorite tweets by Nick
+
+ ### other than from coreystewart's account, most favorited 
+
+
+  #temp <- filter(VA.tweetdf, screenName == 'NickForVA')
+  temp <- temp[order(temp$retweetCount, decreasing=TRUE),]
+  
+ I <-  head(select(temp,text,retweetCount,created,screenName))
+    
+
+
+as.data.frame(I)
+
+ 
+
+
+```
+
+# top 6 retweeted tweet Not including Nick
+```{r echo=FALSE}
+
+
+# top 6 retweeted tweet Not including Corey
+
+  #VA.tweetdf <- VA.tweetdf[order(VA.tweetdf$retweetCount, decreasing=TRUE),]
+  
+  #head(select(VA.tweetdf,text,retweetCount,created,screenName))
+  #head(VA.tweetdf$text)
+
+
+  #temp <- filter(VA.tweetdf, screenName != 'NickForVA')
+   #temp <- filter(temp, isRetweet == 'FALSE')
+  #temp <- temp[order(temp$retweetCount, decreasing=TRUE),]
+  
+  #I <- head(select(temp,text,retweetCount,created,screenName))
+  
+  #as.data.frame(I)
+  
+  
+  
+```
+
+
+### Top ten retweets overall
+
+In this case, there were tweets that were creeated before the week that were still being shared on Twitter and accumulating retweets.
+
+```{r }
+ I <- VA.tweetdf[order(VA.tweetdf$retweetCount, decreasing=TRUE),]
+
+
+ I <- I[!duplicated(I$text),]
+
+
+I <- head(select(I,text,retweetCount,created,screenName,isRetweet),10)
+ 
+  as.data.frame(I)
+```
+
+
+## accounts that have the most total Retweets
+
+```{r echo=FALSE}
+
+
+  ### accounts that have the most total Retweets
+  temp <- filter(VA.tweetdf, isRetweet == 'FALSE')
+   x <- aggregate(temp$retweetCount, by=list(screenName=temp$screenName), FUN=sum)
+  x <- x[order(x$x, decreasing=TRUE),]
+  head(x)
+
+
+
+
+
+```
+
+## Most Active Accounts (including Retweets)
+
+
+```{r echo=FALSE}
+ ### Most Active Accounts (including Retweets)
+I <-  as.data.frame(table(VA.tweetdf$screenName))
+
+I <- I[order(I$Freq, decreasing=TRUE),]
+
+
+head(I)
+
+
+
+```
+
+
+
+
+## Most Active Accounts 
+
+```{r echo=FALSE}
+ ### Most Active Accounts 
+I <- as.data.frame(table(temp$screenName))
+
+I <- I[order(I$Freq, decreasing=TRUE),]
+
+head(I)
+
+
+
+
+```
+
+
+#WORDCLOUD of most common used words 
+
+
+```{r echo=FALSE}
+#######
+ tweet.Corpus <- Corpus(VectorSource(VA.tweetdf$text))
+ tweet.Corpus <- tm_map(tweet.Corpus, removeWords, stopwords())
+ 
+ remove_url <- function(x) gsub("http[^[:space:]]*","",x)
+ tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(remove_url))
+ 
+ 
+ ##### remove anything other than english letters and space
+ 
+ removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*","",x)
+ tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(removeNumPunct))
+ tweet.Corpus <- tm_map(tweet.Corpus, removePunctuation)
+ tweet.Corpus<- tm_map(tweet.Corpus, content_transformer(tolower))
+ tweet.Corpus <- tm_map(tweet.Corpus, stripWhitespace)
+ 
+ myStopWords <- c("virginia", "2018","senate", "vasen","nickforva")
+ 
+ tweet.Corpus <-tm_map(tweet.Corpus, removeWords,myStopWords)
+ 
+ 
+ Corpus.copy <- tweet.Corpus
+ 
+ 
+ 
+ tweet.Corpus <- tm_map(tweet.Corpus, stemDocument)   ### if stemDocument doesn't run, install the package 'SnowballC'
+ #tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(stemCompletion), dictionary = Corpus.copy)
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ #### Specific words you may want to remove #Virginia, Republican, GOP, Democrat, 2018, Primary
+ #myStopWords <- "Corey Stewart"
+ #myStopWords <- c("Corey Stewart",  "Virginia", "Republican", "GOP", "Democrat", 2018, "Primary", " Corey", "Stewart", "coreystewartva","stewart","corey") 
+ 
+
+ #tweet.Corpus <- tm_map(tweet.Corpus, PlainTextDocument)
+
+ 
+ 
+ tdm <-  TermDocumentMatrix(tweet.Corpus)
+ dtm <- DocumentTermMatrix(tweet.Corpus)
+ 
+ 
+ #library(wordcloud)
+ #wordcloud(tweet.Corpus, min.freq = 10, random.order = F)
+ 
+ 
+ 
+ freq <- colSums(as.matrix(dtm)) 
+ 
+ 
+ 
+ 
+ library(wordcloud)
+ dark2 <- brewer.pal(6, "Dark2")
+ wordcloud(names(freq), freq, min.freq = 200, rot.per=0.2, colors=dark2,random.order = F) 
+ 
+ 
+ 
+ 
+ 
+
+
+
+```
+
+
+
+#List of The Top Ten Frequently used Words
+
+
+```{r echo=FALSE}
+
+#List of The Top Ten Frequently used Words
+
+
+
+wf <- data.frame(word=names(freq), freq=freq) 
+  wf <- wf[order(wf$freq, decreasing=TRUE),]
+  head(wf, n = 30)  
+  
+
+
+```
+
+
+#Plot of Words that Appear at least 250 times
+
+```{r echo=FALSE}
+ library(ggplot2)   
+  
+  plot.tweet <- ggplot(subset(wf, freq>248), aes(x = reorder(word,-freq), y = freq)) +
+    geom_bar(stat = "identity", fill="red") + 
+    theme(axis.text.x=element_text(angle=45, hjust=1))
+  plot.tweet   
+  
+
+
+```
+
+## Words Associated with 
+
+ To find out what words are associated with the candidates, I use a function called FindAssocs() on the dataset. For any given word, findAssocs() calculates its correlation with every other word in the dataset. Scores range from 0 to 1. A score of 1 means that two words always appear together, while a score of 0 means that they never appear together.
+
+```{r}
+
+
+# which words are associated with "Corey Stewart"
+  
+  findAssocs(tdm,"coreystewartva", 0.1)
+  
+  findAssocs(tdm,"nickforva", 0.1)
+  
+  findAssocs(tdm,"ewjacksonsr",0.1 )
+
+```
+
+
+# Number of Tweets per Day
+
+```{r,echo=FALSE}
+
+ library(ggplot2)
+  library(scales)
+  
+  
+  #Plotting how often coreystewartva is tweeted per day
+   VA.tweetdf$Date <- as.Date(VA.tweetdf$created)
+  time.freq <- as.data.frame(table(VA.tweetdf$Date))
+  
+  
+  colnames(time.freq) <- c("Date","TweetsperDay")
+  time.freq$Date <- as.Date(time.freq$Date)
+  
+  ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity", fill="red")+scale_x_date(labels = date_format("%Y-%m-%d"))
+  
+  
+  
+  
+
+
+```
+
+
+
+
+```{r echo=FALSE}
+
+### import package "sentimentr"
+library(sentimentr)
+
+VA.tweetdf$text <- gsub("[^0-9A-Za-z///' ]", "",VA.tweetdf$text)
+#### remove http link
+VA.tweetdf$text <- gsub("http\\w+", "",VA.tweetdf$text)
+#### remove rt
+VA.tweetdf$text <- gsub("rt", "",VA.tweetdf$text)
+### remove at
+VA.tweetdf$text <- gsub("@\\w+", "",VA.tweetdf$text)
+
+VA.tweetdf$text <- tolower(VA.tweetdf$text)
+
+
+emo_R_tweets <- sentiment(VA.tweetdf$text)
+#View(emo_R_tweets)
+
+VA.tweetdf$sentiment <- emo_R_tweets$sentiment  ## attaching the sentiment measure to every tweet
+#View(R.tweetdf)
+
+
+
+
+```
+
+
+
+
+```{r echo=FALSE}
+
+### grabbing positive tweets, sample of 
+
+
+
+positive_tweets <- head(unique(VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = T),c(2,18)]),10)
+#positive_tweets
+
+#grabbing negative tweets
+negative_tweets <- head(unique(VA.tweetdf[order(emo_R_tweets$sentiment),c(2,18)]),10)
+negative_tweets
+
+
+
+```
+
+
+
+
+
+```{r echo=FALSE}
+
+B <- VA.tweetdf
+  B$Date <- as.Date(VA.tweetdf$created)
+  
+  
+  B <- B %>% group_by(Date) %>% summarize(daily_sent=sum(sentiment), avg_sent=mean(sentiment))
+  
+  B$daily_sent <- round(B$daily_sent,3)
+  B$avg_sent <- round(B$avg_sent,3)
+  
+  ggplot(B)  + 
+    geom_bar(aes(x=Date, y=daily_sent),stat="identity", fill="tan1", colour="sienna3")+
+    geom_text(aes(label=daily_sent, x=Date, y=daily_sent*0.95), colour="black")+
+    geom_line(aes(x=Date, y=avg_sent*max(B$daily_sent)),stat="identity")+
+    geom_text(aes(label=avg_sent, x=Date, y=avg_sent*max(B$daily_sent)), colour="black")+
+    scale_y_continuous(sec.axis = sec_axis(~./max(B$daily_sent)))
+   
+  
+```
+
+
+
+
+
+```{r echo=FALSE}
+
+
+
+
+```
+
+

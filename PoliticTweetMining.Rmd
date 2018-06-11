@@ -1,0 +1,657 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+```{r echo=FALSE}
+library(twitteR)
+library(wordcloud)
+library(tm)
+library(SnowballC)
+library(readr)
+
+ VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.07.17.csv")
+ VA.tweetdf.2 <- read_csv("/Users/georgesericcolbert/Stew.tweetdf.03.10.csv")
+ 
+ 
+ VA.tweetdf <- rbind(VA.tweetdf,VA.tweetdf.2)
+ 
+```
+
+Starting of this report by looking as the use of #VASen on twitter, between May 07 and May 23.  Twitter returned 963 total tweets between these dates that used this hashtag. 
+
+
+```{r }
+ 
+ 
+ ##### How many are retweets?
+ 
+ table(VA.tweetdf$isRetweet)
+
+```
+
+
+It appears that 834 out the 963 tweets, or 86.6%, were retweets. this is normal since most of the produced on Twitter are ussually retweets.
+
+
+WORDCLOUD of Most Frequently used words in tweets, minimum frequency 30
+
+```{r echo=FALSE}
+#######
+ tweet.Corpus <- Corpus(VectorSource(VA.tweetdf$text))
+ tweet.Corpus <- tm_map(tweet.Corpus, removeWords, stopwords())
+ 
+ remove_url <- function(x) gsub("http[^[:space:]]*","",x)
+ tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(remove_url))
+ 
+ 
+ ##### remove anything other than english letters and space
+ 
+ removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*","",x)
+ tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(removeNumPunct))
+ tweet.Corpus <- tm_map(tweet.Corpus, removePunctuation)
+ tweet.Corpus<- tm_map(tweet.Corpus, content_transformer(tolower))
+ tweet.Corpus <- tm_map(tweet.Corpus, stripWhitespace)
+ 
+ myStopWords <- c("virginia", "2018","senate", "vasen")
+ 
+ tweet.Corpus <-tm_map(tweet.Corpus, removeWords,myStopWords)
+ 
+ 
+ Corpus.copy <- tweet.Corpus
+ 
+ 
+ 
+ tweet.Corpus <- tm_map(tweet.Corpus, stemDocument)   ### if stemDocument doesn't run, install the package 'SnowballC'
+ #tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(stemCompletion), dictionary = Corpus.copy)
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ #### Specific words you may want to remove #Virginia, Republican, GOP, Democrat, 2018, Primary
+ #myStopWords <- "Corey Stewart"
+ #myStopWords <- c("Corey Stewart",  "Virginia", "Republican", "GOP", "Democrat", 2018, "Primary", " Corey", "Stewart", "coreystewartva","stewart","corey") 
+ 
+
+ #tweet.Corpus <- tm_map(tweet.Corpus, PlainTextDocument)
+
+ 
+ 
+ tdm <-  TermDocumentMatrix(tweet.Corpus)
+ dtm <- DocumentTermMatrix(tweet.Corpus)
+ 
+ 
+ #library(wordcloud)
+ #wordcloud(tweet.Corpus, min.freq = 10, random.order = F)
+ 
+ 
+ 
+ freq <- colSums(as.matrix(dtm)) 
+ 
+ 
+ 
+ 
+ library(wordcloud)
+ dark2 <- brewer.pal(6, "Dark2")
+ wordcloud(names(freq), freq, min.freq = 50, rot.per=0.2, colors=dark2,random.order = F) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+```
+
+Corey Stewarts handle is the most common used word amongst all the tweets, suggesting that either tweets about Corey Stewart are more likely to use that hashtag than tweets about Nick Freitas.
+
+The second most frequent word is michael. let's find out who michael is.
+
+```{r echo=FALSE}
+library(dplyr)
+ ### find tweets that use the word michael
+ 
+ mike <- VA.tweetdf[grep("michael",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ 
+ head(select(mike,text), n=7)
+head(select(mike,screenName,retweetCount,created), n=7)
+
+```
+
+Seems like the handle @Michael_1776 is the michael refered to in the wordcloud. Although he has only used the hashtag #VASen 7 times during the May 07-May22 period, those 7 tweets have been retweeted a total of 323 times. Below is a screenshot of the account, and above are thos 7 tweets, along with the retweet count and when they were sent out. 
+
+
+PICTURE of ACCOUNT
+
+
+
+#List of The Top Ten Frequently used Words
+
+```{r echo=FALSE}
+
+wf <- data.frame(word=names(freq), freq=freq) 
+  wf <- wf[order(wf$freq, decreasing=TRUE),]
+  head(wf, n = 10)  
+  
+
+
+```
+Plot of Words that Appear at least 75 times
+
+```{r echo=FALSE}
+ library(ggplot2)   
+  
+  plot.tweet <- ggplot(subset(wf, freq>75), aes(x = reorder(word,-freq), y = freq)) +
+    geom_bar(stat = "identity") + 
+    theme(axis.text.x=element_text(angle=45, hjust=1))
+  plot.tweet   
+  
+
+
+```
+
+
+## Words Associated with coreystewartva and nickforva
+
+ To find out what words are associated with the candidates, I use a function called FindAssocs() on the dataset. For any given word, findAssocs() calculates its correlation with every other word in the dataset. Scores range from 0 to 1. A score of 1 means that two words always appear together, while a score of 0 means that they never appear together.
+
+```{r}
+
+
+# which words are associated with "Corey Stewart"
+  
+  findAssocs(tdm,"coreystewartva", 0.1)
+  
+  findAssocs(tdm,"nickforva", 0.1)
+  
+  findAssocs(tdm,"ewjacksonsr",0.1 )
+
+```
+
+
+
+##ANALYZING @coreystewartva Tweets period May 07-May 23
+
+
+```{r echo=FALSE}
+
+Stew.tweetdf <- read_csv("/Users/georgesericcolbert/Stew.tweetdf.07.17.csv")
+  
+  Stew.tweetdf.2 <- read_csv("/Users/georgesericcolbert/Stew.tweetdf.17.23.csv")
+  
+  Stew.tweetdf <- rbind(Stew.tweetdf,Stew.tweetdf.2)
+
+
+```
+
+
+```{r}
+
+ ##### How many are retweets?
+  
+  table(Stew.tweetdf$isRetweet)
+  
+
+
+```
+
+A total of 2265 tweets were sent out between May 07-May 23,  and 773 out of 2265 tweets, or 0.34%, are retweets.
+
+
+### WorldCloud of Most frequent Words
+```{r echo=FALSE}
+
+#######
+  tweet.Corpus <- Corpus(VectorSource(Stew.tweetdf$text))
+  tweet.Corpus <- tm_map(tweet.Corpus, removeWords, stopwords())
+  
+  remove_url <- function(x) gsub("http[^[:space:]]*","",x)
+  tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(remove_url))
+  
+  
+  ##### remove anything other than english letters and space
+  
+  removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*","",x)
+  tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(removeNumPunct))
+  tweet.Corpus <- tm_map(tweet.Corpus, removePunctuation)
+  tweet.Corpus<- tm_map(tweet.Corpus, content_transformer(tolower))
+  tweet.Corpus <- tm_map(tweet.Corpus, stripWhitespace)
+  
+  myStopWords <- c("virginia", "republican", "gop", 2018, "primary", " corey", "stewart", "coreystewartva") 
+  
+  tweet.Corpus <-tm_map(tweet.Corpus, removeWords,myStopWords)
+  
+  tweet.Corpus <- tm_map(tweet.Corpus, stemDocument)   ### if stemDocument doesn't run, install the package 'SnowballC'
+  ##
+
+  
+ 
+  
+  dtm <- DocumentTermMatrix(tweet.Corpus)
+  
+  freq <- colSums(as.matrix(dtm)) 
+  
+  library(wordcloud)
+  dark2 <- brewer.pal(6, "Dark2")
+  wordcloud(names(freq), freq, min.freq = 50, rot.per=0.2, colors=dark2,random.order = F) 
+
+
+```
+
+The word cloud is suggesting that  the twitter handles of several people (@ColMorrisDavis, @Ingrahamangle, @LouDobbs,@dloesh, @ewerickson) are the most frequent terms that appear in the dataset of tweets relating to @coreystewartva. 
+
+```{r}
+### find tweets that use the word
+ 
+ mike <- VA.tweetdf[grep("ColMorrisDavi",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ mike <- mike[order(mike$retweetCount, decreasing=TRUE),]
+ 
+ head(select(mike,text,screenName,retweetCount,created), n=7)
+
+
+
+
+
+
+
+```
+
+
+
+```{r}
+
+mike <- VA.tweetdf[grep("IngrahamAngl",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ mike <- mike[order(mike$retweetCount, decreasing=TRUE),]
+ 
+ head(select(mike,text,screenName,retweetCount,created), n=7)
+
+
+
+
+
+```
+
+
+```{r}
+
+mike <- VA.tweetdf[grep("LouDobb",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ mike <- mike[order(mike$retweetCount, decreasing=TRUE),]
+ 
+ head(select(mike,text,screenName,retweetCount,created), n=7)
+
+
+
+
+
+
+```
+
+
+```{r}
+mike <- VA.tweetdf[grep("DLoesch",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ mike <- mike[order(mike$retweetCount, decreasing=TRUE),]
+ 
+ head(select(mike,text,screenName,retweetCount,created), n=7)
+
+
+
+
+
+
+```
+
+
+
+
+
+```{r}
+
+
+mike <- VA.tweetdf[grep("EWErickson",VA.tweetdf$text),]
+ 
+ #### filter out retweets to only get original tweets
+ mike <- distinct(mike,text,.keep_all=TRUE)
+ mike <- mike[order(mike$retweetCount, decreasing=TRUE),]
+ 
+ head(select(mike,text,screenName,retweetCount,created), n=7)
+
+
+
+
+
+
+```
+
+###Top 20  frequent terms
+
+```{r echo=FALSE}
+
+wf <- data.frame(word=names(freq), freq=freq) 
+wf <- wf[order(wf$freq, decreasing=TRUE),]
+  head(wf, n = 20)  
+  
+
+
+
+```
+
+
+ ##Frequent Words MINIMUM-75
+
+```{r echo=FALSE}
+
+
+ library(ggplot2)   
+  
+  plot.tweet <- ggplot(subset(wf, freq>75), aes(x = reorder(word,-freq), y = freq)) +
+    geom_bar(stat = "identity") + 
+    theme(axis.text.x=element_text(angle=45, hjust=1))
+  plot.tweet   
+
+
+
+```
+
+
+
+# which words are associated with coreystewartva
+
+```{r}
+
+# which words are associated with "corey"
+  
+  findAssocs(dtm,"coreystewartva", 0.1)
+  
+  findAssocs(dtm,"republican", 0.1)
+  findAssocs(dtm, "realdonaldtrump", 0.1)
+
+
+```
+
+
+
+##### Most favorite tweets of the week talking about coreystewartva
+ 
+##### Most retweeted tweets of the week talking about coreystewartva
+
+```{r}
+ ##### Most favorite tweets of the week talking about coreystewartva
+  library(dplyr)
+  Stew.tweetdf <- Stew.tweetdf[order(Stew.tweetdf$favoriteCount, decreasing=TRUE),]
+  
+  head(select(Stew.tweetdf,text,favoriteCount,created,screenName))
+  #head(Stew.tweetdf$text)
+  
+  
+  ##### Most retweeted tweets of the week talking about coreystewartva
+  Stew.tweetdf <- Stew.tweetdf[order(Stew.tweetdf$retweetCount, decreasing=TRUE),]
+  
+  head(select(Stew.tweetdf,text,retweetCount,created,screenName))
+  #head(Stew.tweetdf$text)
+
+
+
+```
+
+
+### other than from coreystewart's account, most favorited
+### other than from coreystewart's account, most retweeted
+```{r}
+
+ ### other than from coreystewart's account, most favorited 
+  temp <- filter(Stew.tweetdf, screenName != 'CoreyStewartVA')
+  temp <- temp[order(temp$favoriteCount, decreasing=TRUE),]
+  head(select(temp,text,favoriteCount,created,screenName))
+  
+  ### other than from coreystewart's account, most retweeted
+  temp <- filter(Stew.tweetdf, screenName != 'CoreyStewartVA')
+  temp <- temp[order(temp$retweetCount, decreasing=TRUE),]
+  head(select(temp,text,retweetCount,created,screenName))
+  
+
+
+```
+
+
+
+
+### accounts that have the most total Retweets mentioning Corey Stewart
+
+```{r}
+
+### accounts that have the most total Retweets mentioning Corey Stewart
+   x <- aggregate(temp$retweetCount, by=list(screenName=temp$screenName), FUN=sum)
+  x <- x[order(x$x, decreasing=TRUE),]
+  head(x)
+  
+
+
+```
+
+
+ This Graph plots how frequently is the handle "coreystewartva" is tweeted  per day.
+ 
+```{r,echo=FALSE}
+
+ library(ggplot2)
+  library(scales)
+  
+  
+  #Plotting how often coreystewartva is tweeted per day
+  Stew.tweetdf$Date <- as.Date(Stew.tweetdf$created)
+  
+  time.freq <- as.data.frame(table(Stew.tweetdf$Date))
+  colnames(time.freq) <- c("Date","TweetsperDay")
+  time.freq$Date <- as.Date(time.freq$Date)
+  
+  ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity")+scale_x_date(labels = date_format("%Y-%m-%d"))
+  
+  
+  
+  
+
+
+```
+
+
+ ##### How many are retweets?
+```{r, echo=FALSE}
+
+nick.tweetdf <- read_csv("/Users/georgesericcolbert/nick.tweetdf.13.22.csv")
+  
+ 
+  
+  
+  
+  ##### How many are retweets?
+  
+  table(nick.tweetdf$isRetweet)
+
+
+```
+
+##### worldcloud 
+```{r, echo=FALSE}
+  #######
+  tweet.Corpus <- Corpus(VectorSource(nick.tweetdf$text))
+  tweet.Corpus <- tm_map(tweet.Corpus, removeWords, stopwords())
+  
+  remove_url <- function(x) gsub("http[^[:space:]]*","",x)
+  tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(remove_url))
+  
+  
+  ##### remove anything other than english letters and space
+  
+  removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*","",x)
+  tweet.Corpus <- tm_map(tweet.Corpus, content_transformer(removeNumPunct))
+  tweet.Corpus <- tm_map(tweet.Corpus, removePunctuation)
+  tweet.Corpus<- tm_map(tweet.Corpus, content_transformer(tolower))
+  tweet.Corpus <- tm_map(tweet.Corpus, stripWhitespace)
+  
+  myStopWords <- c("virginia", "republican", "gop", 2018, "Primary", "nick", "freitas", "nickforva") 
+  
+  tweet.Corpus <-tm_map(tweet.Corpus, removeWords,myStopWords)
+  
+  
+  tweet.Corpus <- tm_map(tweet.Corpus, stemDocument)   ### if stemDocument doesn't run, install the package 'SnowballC'
+  ##
+  
+ tweet.dtm <- DocumentTermMatrix(tweet.Corpus)
+  
+  
+  
+  
+  tweet.matrix <- as.matrix(tweet.dtm)
+  
+  
+  freq <- colSums(as.matrix(tweet.dtm)) 
+  
+  
+  ##### worldcloud 
+  
+  library(wordcloud)
+  dark2 <- brewer.pal(6, "Dark2")
+  wordcloud(names(freq), freq, min.freq = 40, rot.per=0.2, colors=dark2,random.order = F) 
+  
+  
+
+
+```
+
+# Plot Word Frequencies 
+```{r, echo=FALSE}
+# Plot Word Frequencies 
+  
+  wf <- data.frame(word=names(freq), freq=freq) 
+  wf <- wf[order(wf$freq, decreasing=TRUE),]
+  head(wf, n = 20) 
+  library(ggplot2) 
+  
+
+
+
+```
+
+
+```{r}
+
+ plot.tweet <- ggplot(subset(wf, freq>200), aes(x = reorder(word, -freq), y = freq)) +
+    geom_bar(stat = "identity") + 
+    theme(axis.text.x=element_text(angle=45, hjust=1))
+  plot.tweet   
+
+
+
+```
+
+
+
+
+
+
+```{r}
+
+ ##### Most retweeted tweets of the week talking about nickforva
+  nick.tweetdf <- nick.tweetdf[order(nick.tweetdf$retweetCount, decreasing=TRUE),]
+  
+  head(select(nick.tweetdf,text,retweetCount,created,screenName))
+  #head(nick.tweetdf$text)
+
+
+```
+
+
+```{r}
+
+##### Most favorite tweets of the week talking about nickforVA
+  nick.tweetdf <- as.data.frame(nick.tweetdf)
+  nick.tweetdf <- nick.tweetdf[order(nick.tweetdf$favoriteCount, decreasing=TRUE),]
+  
+  head(select(nick.tweetdf,text,favoriteCount,created,screenName))
+
+```
+
+```{r}
+ ### other than from coreystewart's account, most favorited 
+  temp <- filter(nick.tweetdf, screenName != 'NickForVA')
+  temp <- temp[order(temp$favoriteCount, decreasing=TRUE),]
+  head(select(temp,text,favoriteCount,created,screenName))
+
+
+
+```
+
+
+```{r}
+### other than from coreystewart's account, most retweeted
+  temp <- filter(nick.tweetdf, screenName != 'NickForVA')
+  temp <- temp[order(temp$retweetCount, decreasing=TRUE),]
+  head(select(temp,text,retweetCount,created,screenName))
+  
+
+
+
+```
+
+
+```{r}
+ ### accounts that have the most total Retweets mentioning Corey Stewart
+  x <- aggregate(temp$retweetCount, by=list(screenName=temp$screenName), FUN=sum)
+  x <- x[order(x$x, decreasing=TRUE),]
+  head(x)
+  
+  
+  library(ggplot2)
+  library(scales)
+
+
+
+```
+
+
+```{r}
+#Plotting how often nickforva is tweeted per day
+  nick.tweetdf$Date <- as.Date(nick.tweetdf$created)
+  
+  time.freq <- as.data.frame(table(nick.tweetdf$Date))
+  colnames(time.freq) <- c("Date","TweetsperDay")
+  time.freq$Date <- as.Date(time.freq$Date)
+  
+  ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity")+scale_x_date(labels = date_format("%Y-%m-%d"))
+  
+  
+
+
+
+```
+
+
+
+```{}
+
+
+
+
+```
+
