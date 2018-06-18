@@ -179,11 +179,11 @@ head(o)
  #WordCloud of tweets using the hastage #VASen
  
  
- VA.tweet.3 <- searchTwitter("nickforva", n = 100, lang = 'en', since = '2018-06-03', until = '2018-06-10')
+ VA.tweet.3 <- searchTwitter("Nick Freitas OR nickforva", n = 15000, lang = 'en', since = '2018-06-12', until = '2018-06-13')
  
  VA.tweetdf <- twListToDF(VA.tweet.3)
  
- write.csv(VA.tweetdf, file =  "nick.tweetdf.03.10.csv")
+ write.csv(VA.tweetdf, file =  "VA.tweetdf.PrimDay.csv")
  
  VA.tweetdf <- read_csv("VA.tweetdf.07.17.csv")
  VA.tweetdf.2 <- read_csv("VA.tweetdf.17.23.csv")
