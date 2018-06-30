@@ -36,6 +36,12 @@ library(tm)
 library(SnowballC)
 library(readr)
 library(rtweet)
+library(dplyr)
+library(ggplot2)  
+library(reshape2)
+
+
+
 setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
 
@@ -174,16 +180,33 @@ head(o)
  
  ################################### ################################### ################################### ###################################
 
-
+ Stew_tweetdf_03_11 <- read_csv("Tim.tweetdf.03.11.csv")
+ temp <- filter(Part3, screenName == 'CoreyStewartVA')
+ write.csv(Part3, file =  "Tim.tweetdf.13.21.csv")
+ 
+ 
+ 
+ 
+ t <- filter(VA.tweetdf, screenName == 'UK_Groypley')
+ t <- t[order(t$created, decreasing=FALSE),]
+ 
+ 
  
  #WordCloud of tweets using the hastage #VASen
  
  
- VA.tweet.3 <- searchTwitter("Nick Freitas OR nickforva", n = 15000, lang = 'en', since = '2018-06-12', until = '2018-06-13')
+ VA.tweet.3 <- searchTwitter('#vasen', n = 30000, lang = 'en', since = '2018-06-12', until = '2018-06-21')
  
- VA.tweetdf <- twListToDF(VA.tweet.3)
+
+  Part1<-twListToDF(VA.tweet.3) 
+  
+  Part3 <- rbind(Part1,Part2)
+  
+  Part3 <- Part3[!duplicated(Part3),]
+  
+  VA.tweetdf <- twListToDF(VA.tweet.3)
  
- write.csv(VA.tweetdf, file =  "VA.tweetdf.PrimDay.csv")
+ write.csv(VA.tweetdf, file =  "Nick.tweetdf.PrimDay.csv")
  
  VA.tweetdf <- read_csv("VA.tweetdf.07.17.csv")
  VA.tweetdf.2 <- read_csv("VA.tweetdf.17.23.csv")
@@ -311,6 +334,7 @@ head(o)
   
   findAssocs(tdm,"ewjacksonsr",0.1 )
 
+  # Number of Tweets per Day
   
   time.freq <- as.data.frame(table(VA.tweetdf$Date))
   
@@ -321,7 +345,165 @@ head(o)
   ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity")+scale_x_date(labels = date_format("%Y-%m-%d"))
   
   
+  
+  ## Plot  Likes/Retweets per Day
+  
+  B<- filter(VA.tweetdf, screenName == 'CoreyStewartVA')
+  
+  B <- filter(B, isRetweet == 'FALSE')
+  
+   B<- select(B, retweetCount,favoriteCount, created)
    
+ 
+  B$Date <- as.Date(B$created)
+  
+  b <-  B %>% group_by(Date) %>% summarise(totalRT=sum(retweetCount), totalFav=sum(favoriteCount))
+  
+  
+  ggplot(b) +
+    geom_bar(aes(x=Date, y=totalRT),stat="identity", fill="tan1", colour="sienna3")+ geom_bar(aes(x=Date, y=totalFav),stat="identity", fill="red", colour="sienna3")
+  
+  
+  ggplot(b) + geom_bar(aes(x=Date, y=totalFav),stat="identity", fill="red", colour="sienna3")
+  
+  
+  ## Plots Stacked
+  
+  df_melt = melt(b, id.vars = 'Date')
+  
+  ggplot(df_melt, aes(x = Date, y = value,colour=variable)) + geom_line()
+    
+  ggplot(df_melt, aes(x = Date, y = value,colour=variable)) + geom_bar(stat="identity")
+  
+  
+  # Grouped
+  ggplot(df_melt, aes(fill=variable, y=value, x=Date)) + 
+    geom_bar(position="dodge", stat="identity")
+  
+  # Stacked
+  ggplot(df_melt, aes(fill=variable, y=value, x=Date)) + 
+    geom_bar( stat="identity")
+  
+  
+  
+  ###########  ########################## Sentiment Analysis ##############  ##########################
+  
+  
+  
+  
+  ### import package "sentimentr"
+  library(sentimentr)
+  VA.tweetdf <- read_csv("/Users/georgesericcolbert/Tim.tweetdf.13.21.csv")
+  VA.tweetdf <- filter(VA.tweetdf, screenName != 'MikeWebbNow')
+  
+  
+  VA.tweetdf$text <- gsub("[^0-9A-Za-z///' ]", "",VA.tweetdf$text)
+  #### remove http link
+  VA.tweetdf$text <- gsub("http\\w+", "",VA.tweetdf$text)
+  #### remove rt
+  VA.tweetdf$text <- gsub("rt", "",VA.tweetdf$text)
+  ### remove at
+  VA.tweetdf$text <- gsub("@\\w+", "",VA.tweetdf$text)
+  
+  VA.tweetdf$text <- tolower(VA.tweetdf$text)
+  
+  
+  emo_R_tweets <- sentiment(VA.tweetdf$text)
+  #View(emo_R_tweets)
+  
+  VA.tweetdf$sentiment <- emo_R_tweets$sentiment  ## attaching the sentiment measure to every tweet
+  #View(R.tweetdf)
+  
+  ############Top 10 Negative Tweets
+  
+  
+  
+  ### grabbing positive tweets, sample of 
+  
+  
+  
+  #positive_tweets <- head(unique(VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = T),c(2,18)]),10)
+  #positive_tweets
+  
+  #grabbing negative tweets
+  #negative_tweets <- head(unique(VA.tweetdf[order(emo_R_tweets$sentiment),c(2,18)]),10)
+  #negative_tweets
+  
+  I<- VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = FALSE),]
+  I<-   filter(I, isRetweet == 'FALSE')
+  I <-  head(select(I,text,retweetCount,favoriteCount, created,screenName),10)
+  
+  as.data.frame(I)
+  
+
+  ###########Top 10 Positive Tweets
+  
+  
+  ### grabbing positive tweets, sample of 
+  
+  
+  
+  #positive_tweets <- head(unique(VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = T),c(2,18)]),10)
+  #positive_tweets
+  
+  #grabbing negative tweets
+  #negative_tweets <- head(unique(VA.tweetdf[order(emo_R_tweets$sentiment),c(2,18)]),10)
+  #negative_tweets
+  
+  I<- VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = TRUE),]
+  I<-   filter(I, isRetweet == 'FALSE')
+  I <-  head(select(I,text,retweetCount,favoriteCount, created,screenName),10)
+  
+  as.data.frame(I)
+  
+   
+  ###### 
+  
+  b <- subset(B, sentiment < -1)
+  
+  ########################## WorldCloud of words used in top 1000 most negateive and most positive tweets
+  
+  
+  
+  
+  
+  positive_tweets <- head(unique(VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = T),c(2,18)]),1000)
+  #positive_tweets
+  
+  #grabbing negative tweets
+  negative_tweets <- head(unique(VA.tweetdf[order(emo_R_tweets$sentiment),c(2,18)]),1000)
+  
+  #negative_tweets
+  
+  
+  write.table(positive_tweets$text, file = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud/positive.txt",sep = "")
+  write.table(negative_tweets$text, file = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud/negative.txt",sep = "")
+  
+  #### 
+  library(tm)
+  tweet.Corpus.2 <- Corpus(DirSource(directory = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud"))
+  summary(tweet.Corpus.2)
+  
+  library(tm)
+  
+  clean.tweet.Corpus.2 <- tm_map(tweet.Corpus.2, tolower)
+  clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, removeWords, stopwords())
+  clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, content_transformer(removeNumPunct))
+  clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, removePunctuation)
+  clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, stripWhitespace)
+  clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, stemDocument) 
+  
+  ###### TermDocumentMatrix and DocumentTermMatrix do the same thing
+  tc2_tdm <- TermDocumentMatrix(clean.tweet.Corpus.2)
+  
+  tc2_matrix <- as.matrix(tc2_tdm)
+  
+  colnames(tc2_matrix) <- c("negative Tweets", "Postive Tweets")
+  comparison.cloud(tc2_matrix, max.words = 40, random.order = FALSE)
+  
+  
+  
+  
   ################################### ################################### ################################### ###################################
  
  

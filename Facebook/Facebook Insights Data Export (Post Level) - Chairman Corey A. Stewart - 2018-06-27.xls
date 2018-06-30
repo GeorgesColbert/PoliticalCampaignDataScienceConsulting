@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                      <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+                       xmlns:x="urn:schemas-microsoft-com:office:excel"
+                       xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+                       xmlns:html="http://www.w3.org/TR/REC-html40">
+                      <Styles>
+                        <Style ss:ID="s17">
+                          <NumberFormat ss:Format="m/d/yy"/>
+                          <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s18">
+                          <NumberFormat ss:Format="m/d/yy"/>
+                          <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s19">
+                          <NumberFormat ss:Format="m/yy"/>
+                          <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s20">
+                          <NumberFormat ss:Format="m/yy"/>
+                          <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s21">
+                          <NumberFormat ss:Format="m/d/yy h:mm AM/PM"/>
+                          <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s22">
+                          <NumberFormat ss:Format="m/d/yy h:mm AM/PM"/>
+                          <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s23">
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s24">
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s25">
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s26">
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s27">
+                         <NumberFormat ss:Format="0"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s28">
+                         <NumberFormat ss:Format="0"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s29">
+                         <NumberFormat ss:Format="_(&quot;$&quot;* #,##0.00_);_(&quot;$&quot;* (#,##0.00);_(&quot;$&quot;* &quot;-&quot;??_);_(@_)"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s30">
+                         <NumberFormat ss:Format="_(&quot;$&quot;* #,##0.00_);_(&quot;$&quot;* (#,##0.00);_(&quot;$&quot;* &quot;-&quot;??_);_(@_)"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s31">
+                         <NumberFormat ss:Format="Percent"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s32">
+                         <NumberFormat ss:Format="Percent"/>
+                         <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s33">
+                         <NumberFormat ss:Format="YYYY-mm-dd"/>
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+                        </Style>
+                        <Style ss:ID="s34">
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana" ss:Bold="1"/>
+                        </Style>
+                        <Style ss:ID="s35">
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                        <Style ss:ID="s36">
+                         <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+                         <Font ss:FontName="Verdana"/>
+                        </Style>
+                      </Styles>
+<Worksheet ss:Name="Key Metrics">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="12" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="13" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="15" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="16" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="17" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="18" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="19" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="20" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="21" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="22" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="23" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="24" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="25" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="26" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="27" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="28" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="29" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="30" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="31" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="32" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="33" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="34" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Audience Targeting</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Total Reach</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post organic reach</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Paid Reach</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Total Impressions</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Organic Impressions</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Paid Impressions</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Engaged Users</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Consumers</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Consumptions</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Negative feedback</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Negative Feedback from Users</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Impressions by people who have liked your Page</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post reach by people who like your Page</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Post Paid Impressions by people who have liked your Page</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Paid reach of a post by people who like your Page</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime People who have liked your Page and engaged with your post</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Organic views to 95%</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Organic views to 95%</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Paid views to 95%</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Paid views to 95%</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Organic Video Views</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Organic Video Views</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Paid Video Views</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Paid Video Views</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Average time video viewed</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Lifetime Video length</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who had your Page's post enter their screen. Posts include statuses, photos, links, videos and more. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who had your Page's post enter their screen through unpaid distribution. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who had your Page's post enter their screen through paid distribution such as an ad. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of times your Page's post entered a person's screen. Posts include statuses, photos, links, videos and more. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of times your Page's posts entered a person's screen through unpaid distribution. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of times your Page's post entered a person's screen through paid distribution such as an ad. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of unique people who engaged in certain ways with your Page post, for example by commenting on, liking, sharing, or clicking upon particular elements of the post. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who clicked anywhere in your post. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of clicks anywhere in your post. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who have given negative feedback to your post. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of times people have given negative feedback to your post. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of impressions of your Page post to people who have liked your Page. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who saw your Page post because they've liked your Page (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of paid impressions of your Page post to people who have liked your Page. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who like your Page and who saw your Page post in an ad or sponsored story. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who have liked your Page and clicked anywhere in your posts. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed to 95% of its length without any paid promotion. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed to 95% of its length without any paid promotion. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed to 95% of its length after paid promotion. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed to 95% of its length after paid promotion. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed for more than 3 seconds without any paid promotion. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed for more than 3 seconds without any paid promotion. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed more than 3 seconds after paid promotion. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Number of times your video was viewed more than 3 seconds after paid promotion. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Average time video viewed (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: Length of a video post (Total Count)</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1140</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1140</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1767</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1767</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">148</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">99</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">169</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">177</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">70</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">33</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">67</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">67</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">97</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">97</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">16</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">10</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">13</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">54</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">36</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">13</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">0</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Talking About This(...">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="12" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">share</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">like</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">comment</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of unique people who created a story about your Page post by interacting with it. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">10</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">82</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">3</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">9</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Post Stories by act...">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="12" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">share</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">like</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">comment</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of stories created about your Page post, by action type. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">10</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">87</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">3</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">1</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">9</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">2</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Post Consumers by type">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">other clicks</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">photo view</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who clicked anywhere in your post, by type. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">85</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">36</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">8</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">4</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Post Consumptions b...">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">other clicks</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">photo view</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of clicks anywhere in your post, by type. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">126</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">43</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">9</Data></Cell>
+<Cell ss:StyleID="s27"><Data ss:Type="Number">4</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Negative Feedback f...">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of times people have given negative feedback to your post, by type. (Total Count)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+
+<Worksheet ss:Name="Lifetime Negative Feedback">
+<Table>
+<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="150"/>
+<Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150"/>
+<Row>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post ID</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Permalink</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Post Message</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Countries</Data></Cell>
+<Cell ss:StyleID="s26"><Data ss:Type="String">Languages</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Posted</Data></Cell>
+<Cell ss:StyleID="s24"><Data ss:Type="String">Audience Targeting</Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Lifetime: The number of people who have given negative feedback to your post, by type. (Unique Users)</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1692726094174259</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Yesterday, I was proud to attend the ribbon cutting for Prince William County's new Central District police station. This new station, named after retired Prince William County Police Department Chief Charlie T. Deane, is a milestone for public safety in Prince William County.
+
+Without Chief Deane, we would not have the level of public safety we have today. On behalf of the entire Prince William County community, congratulations Chief Deane. Job well done, and this is very much deserved.</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-20T09:28:28.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+</Row>
+
+<Row>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">1596958217084381_1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">https://www.facebook.com/pwcchairman/posts/1685460888234113</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">It was a true honor to celebrate the grand opening of the Ali Krieger Sports Complex on June 9 with soccer superstar (and PWC native) Ali Krieger, SunCal Development, and our great County Staff. A tremendous milestone for Prince William County and our athletes!
+
+More information:
+
+&quot;During a groundbreaking ceremony in October 2015, Ali Krieger – a 2016 Olympian and member of the 2015 Women's World Cup championship team – said she looked forward to the day she could come back and open the new sports complex that would eventually bear her name.
+
+Krieger, a Prince William County native, recently got the chance to visit home and cut the ribbon for the complex that sits on 29.7 acres adjacent to St. John Paul the Great High School and includes seven rectangular, multi-purpose fields; a softball field; restrooms; a tot lot; and parking.&quot;</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String">Photo</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"></Data></Cell>
+<Cell ss:StyleID="s21"><Data ss:Type="DateTime">2018-06-15T12:16:38.000</Data></Cell>
+<Cell ss:StyleID="s25"><Data ss:Type="String"> </Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+</Workbook>
