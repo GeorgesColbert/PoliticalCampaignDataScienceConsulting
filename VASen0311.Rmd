@@ -1,7 +1,7 @@
 ---
-title: "VASenateAnalysis"
+title: "#VASEN Analysis"
 author: "Georges Colbert"
-date: "6/12/2018"
+date: "7/16/2018"
 output:
   word_document: default
   html_document: default
@@ -24,13 +24,13 @@ library(tm)
 library(SnowballC)
 library(readr)
  library(dplyr)
-
+library(ggplot2) 
 
  #VA.tweetdf <- read_csv("/Users/georgesericcolbert/Stew.tweetdf.28.03.csv")
  #VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.27.2.csv")
- VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.PrimDay.csv")
+ VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.August.03.13.csv")
 
- 
+
 ```
 
 #Total Number of tweets
@@ -43,6 +43,34 @@ library(readr)
 
 ```
 
+
+# Number of Tweets per Day
+
+```{r,echo=FALSE}
+
+ library(ggplot2)
+  library(scales)
+  
+  
+  #Plotting how often coreystewartva is tweeted per day
+   VA.tweetdf$Date <- as.Date(VA.tweetdf$created)
+  time.freq <- as.data.frame(table(VA.tweetdf$Date))
+  
+  
+  colnames(time.freq) <- c("Date","TweetsperDay")
+  time.freq$Date <- as.Date(time.freq$Date)
+  
+  ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity", fill="red")+scale_x_date(labels = date_format("%Y-%m-%d"))
+  
+  
+  
+  
+
+
+```
+
+
+
 # How many are retweets?
 ```{r }
  
@@ -52,6 +80,44 @@ library(readr)
  table(VA.tweetdf$isRetweet)
 
 ```
+
+```{r}
+
+ q <- grepl("CoreyStewartVA|Corey|corey|Stewart|stewart", VA.tweetdf$text)
+
+ q <- table(q)
+q <- as.data.frame(q)
+
+colnames(q) <- c("Mentions Corey Stewart", "Count")
+
+q
+
+ggplot(q, aes(`Mentions Corey Stewart`, Count))+geom_bar(stat="identity", fill="red")+ ggtitle("Mentions Corey Stewart?")
+
+
+```
+
+
+
+
+
+
+
+```{r}
+
+p <- grepl("Tim|tim|kaine|Kaine|timkaine", VA.tweetdf$text)
+
+ p <- table(p)
+ 
+ p <- as.data.frame(p)
+ 
+colnames(p) <- c("Mentions Tim Kaine", "Count")
+
+ggplot(p, aes(`Mentions Tim Kaine`, Count))+geom_bar(stat="identity", fill="blue")+ ggtitle("Mentions Tim Kaine?")
+
+```
+
+
 
 
 ### list of top 6 favorite tweets of the period
@@ -224,24 +290,38 @@ head(I)
  
  
  freq <- colSums(as.matrix(dtm)) 
+
+ 
+ 
+ 
+
  
  
  
  
- library(wordcloud)
- dark2 <- brewer.pal(6, "Dark2")
- wordcloud(names(freq), freq, min.freq = 400, rot.per=0.2, colors=dark2,random.order = F) 
+
  
  
- 
- 
- 
+
 
 
 
 ```
 
 
+#WORDCLOUD of most common used words (Top 40)
+
+```{r}
+
+ library(wordcloud)
+ dark2 <- brewer.pal(6, "Dark2")
+ wordcloud(names(freq), freq, min.freq = 50, rot.per=0.2, colors=dark2,random.order = F) 
+ 
+ 
+
+
+
+```
 
 #List of The Top 15 Frequently used Words
 
@@ -261,12 +341,12 @@ wf <- data.frame(word=names(freq), freq=freq)
 ```
 
 
-#Plot of Words that Appear at least 800 times
+#Plot of Words that Appear at least 75 times
 
 ```{r echo=FALSE}
  library(ggplot2)   
   
-  plot.tweet <- ggplot(subset(wf, freq>800), aes(x = reorder(word,-freq), y = freq)) +
+  plot.tweet <- ggplot(subset(wf, freq>75), aes(x = reorder(word,-freq), y = freq)) +
     geom_bar(stat = "identity", fill="red") + 
     theme(axis.text.x=element_text(angle=45, hjust=1))
   plot.tweet   
@@ -287,37 +367,12 @@ wf <- data.frame(word=names(freq), freq=freq)
   findAssocs(tdm,"coreystewartva", 0.1)
   
   
-  findAssocs(tdm,"nickforva", 0.1)
+  findAssocs(tdm,"timkain", 0.1)
   
-  findAssocs(tdm,"kaine",0.1 )
+  findAssocs(tdm,"trump",0.1 )
 
 ```
 
-
-# Number of Tweets per Day
-
-```{r,echo=FALSE}
-
- library(ggplot2)
-  library(scales)
-  
-  
-  #Plotting how often coreystewartva is tweeted per day
-   VA.tweetdf$Date <- as.Date(VA.tweetdf$created)
-  time.freq <- as.data.frame(table(VA.tweetdf$Date))
-  
-  
-  colnames(time.freq) <- c("Date","TweetsperDay")
-  time.freq$Date <- as.Date(time.freq$Date)
-  
-  ggplot(data = time.freq,aes(Date,TweetsperDay))+geom_bar(stat="identity", fill="red")+scale_x_date(labels = date_format("%Y-%m-%d"))
-  
-  
-  
-  
-
-
-```
 
 
 
@@ -327,24 +382,29 @@ wf <- data.frame(word=names(freq), freq=freq)
 ### import package "sentimentr"
 library(sentimentr)
 
-VA.tweetdf$text <- gsub("[^0-9A-Za-z///' ]", "",VA.tweetdf$text)
+
+VA.tweetdf <- read_csv("/Users/georgesericcolbert/VA.tweetdf.August.08.14.csv")
+
+
+i.VA.tweetdf <- VA.tweetdf
+  
+  
+i.VA.tweetdf$text <- gsub("[^0-9A-Za-z///' ]", "",i.VA.tweetdf$text)
 #### remove http link
-VA.tweetdf$text <- gsub("http\\w+", "",VA.tweetdf$text)
+i.VA.tweetdf$text <- gsub("http\\w+", "",i.VA.tweetdf$text)
 #### remove rt
-VA.tweetdf$text <- gsub("rt", "",VA.tweetdf$text)
+i.VA.tweetdf$text <- gsub("rt", "",i.VA.tweetdf$text)
 ### remove at
-VA.tweetdf$text <- gsub("@\\w+", "",VA.tweetdf$text)
+i.VA.tweetdf$text <- gsub("@\\w+", "",i.VA.tweetdf$text)
 
-VA.tweetdf$text <- tolower(VA.tweetdf$text)
+i.VA.tweetdf$text <- tolower(i.VA.tweetdf$text)
 
 
-emo_R_tweets <- sentiment(VA.tweetdf$text)
+emo_R_tweets <- sentiment(i.VA.tweetdf$text)
 #View(emo_R_tweets)
 
 VA.tweetdf$sentiment <- emo_R_tweets$sentiment  ## attaching the sentiment measure to every tweet
 #View(R.tweetdf)
-
-
 
 
 ```
@@ -399,29 +459,84 @@ as.data.frame(I)
 
 ```
 
+```{r echo=FALSE}
+B <- VA.tweetdf
+B$Date <- as.Date(VA.tweetdf$created)
+  
+B$polarity <- ifelse(B$sentiment > 0.05,"positive",ifelse(B$sentiment < -0.05,"negative","neutral"))
+
+qplot(factor(polarity), data=B, geom="bar", fill=factor(polarity))+xlab("Polarity Categories") + ylab("Frequency") + ggtitle("Mentions Sentiments Overall ")
 
 
-
+```
+# WorldCloud of words used in top 50 most negative and top 50 most positive tweets
 
 ```{r echo=FALSE}
 
-B <- VA.tweetdf
-  B$Date <- as.Date(VA.tweetdf$created)
+VA.tweetdf <- i.VA.tweetdf
+VA.tweetdf$sentiment <- emo_R_tweets$sentiment
+positive_tweets <- head(unique(VA.tweetdf[order(VA.tweetdf$sentiment, decreasing = T),c(2,18)]),50)
+#positive_tweets
+
+#grabbing negative tweets
+negative_tweets <- head(unique(VA.tweetdf[order(emo_R_tweets$sentiment),c(2,18)]),50)
+
+#negative_tweets
+
+
+write.table(positive_tweets$text, file = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud/positive.txt",sep = "")
+write.table(negative_tweets$text, file = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud/negative.txt",sep = "")
+
+#### 
+library(tm)
+tweet.Corpus.2 <- Corpus(DirSource(directory = "/Users/georgesericcolbert/Desktop/Projects/Political Tweets/WordCloud"))
+summary(tweet.Corpus.2)
+
+library(tm)
+
+clean.tweet.Corpus.2 <- tm_map(tweet.Corpus.2, tolower)
+clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, removeWords, stopwords())
+clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, content_transformer(removeNumPunct))
+clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, removePunctuation)
+clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, stripWhitespace)
+clean.tweet.Corpus.2 <- tm_map(clean.tweet.Corpus.2, stemDocument)
+ #myStopWords <- c( "2018","the","dont", "corey","stewart","coreystewava","stewa","scotttaylorva", "jackposobiec")
+#myStopWords <- c( "2018","the","dont", "tim","kain","timkain")
+ myStopWords <- c("virginia", "2018","senate", "vasen")
+
+ clean.tweet.Corpus.2 <-tm_map(clean.tweet.Corpus.2, removeWords,myStopWords)
+
+###### TermDocumentMatrix and DocumentTermMatrix do the same thing
+tc2_tdm <- TermDocumentMatrix(clean.tweet.Corpus.2)
+
+tc2_matrix <- as.matrix(tc2_tdm)
+
+
+```
+
+```{r}
+colnames(tc2_matrix) <- c("negative Tweets", "Positive Tweets")
+comparison.cloud(tc2_matrix, max.words = 24,colors=brewer.pal(ncol(tc2_matrix),"Dark2"), random.order = FALSE)
+
+
+
+```
+
+```{r echo=FALSE}
+
+ b <-  B %>% group_by(Date) %>% count(polarity)
   
-  
-  B <- B %>% group_by(Date) %>% summarize(daily_sent=sum(sentiment), avg_sent=mean(sentiment))
-  
-  B$daily_sent <- round(B$daily_sent,3)
-  B$avg_sent <- round(B$avg_sent,3)
-  
-  ggplot(B)  + 
-    geom_bar(aes(x=Date, y=daily_sent),stat="identity", fill="tan1", colour="sienna3")+
-    geom_text(aes(label=daily_sent, x=Date, y=daily_sent*0.95), colour="black")+
-    geom_line(aes(x=Date, y=avg_sent*max(B$daily_sent)),stat="identity")+
-    geom_text(aes(label=avg_sent, x=Date, y=avg_sent*max(B$daily_sent)), colour="black")+
-    scale_y_continuous(sec.axis = sec_axis(~./max(B$daily_sent)))
-   
-  
+#df_melt = melt(b, id.vars = 'Date')
+
+ggplot(b, aes(fill=polarity, y=n, x=Date)) + 
+   geom_bar( stat="identity")+ ggtitle("Mentions Sentiment by Date ")+ylab("Count")
+#ggplot(B,aes(x=Date, y=sentiment, fill=polarity)) + geom_bar(stat="identity",position = "stack")
+
+
+ggplot(b, aes(fill=polarity, y=n, x=Date)) + 
+   geom_bar( stat="identity",position = "fill")+ ggtitle("Mentions Sentiment by Date (%)")+ylab("Percentage")
+
+
 ```
 
 
@@ -430,7 +545,7 @@ B <- VA.tweetdf
 
 ```{r echo=FALSE}
 
-
+hist(B$sentiment, breaks=20, col="red", main = "Distribution of Sentiment",xlab= "Sentiment Score")
 
 
 ```

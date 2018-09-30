@@ -1,0 +1,45 @@
+
+
+####### # Tweets Mining app was created 
+
+
+
+#### Use the youtube video to follow https://www.youtube.com/watch?v=qWmMKmPVtgk
+
+#Use the youtube video to follow part 2: https://www.youtube.com/watch?v=jk8e6RQGzqw
+
+
+#### https://twitter.com/BitcoinTweets website url
+
+###Consumer Key (API Key)	e8snPvrnYPRxLlD3q9cGgSB7v
+#Consumer Secret (API Secret)	ZXeixJRMBKwOaWpjx0tdV4oj9oK8wEwgFe8Z7ykvEtJOOnS4Tx
+#Access Level	Read and write (modify app permissions)
+#Owner	gebanks90
+#Owner ID	343070505
+
+#Access Token	343070505-L45mKFbmUdivLwRCrBqVOZS0i53AEo50InU4ucuD
+#Access Token Secret	li7JTCCX6VRRhwgzeRg5WFP3aetdPykDxDP5Ww9fgMR26
+#Access Level	Read and write
+#Owner	gebanks90
+#Owner ID	343070505
+
+import tweepy 
+
+api_key = "e8snPvrnYPRxLlD3q9cGgSB7v"
+api_secret = "ZXeixJRMBKwOaWpjx0tdV4oj9oK8wEwgFe8Z7ykvEtJOOnS4Tx"
+access_token = "343070505-L45mKFbmUdivLwRCrBqVOZS0i53AEo50InU4ucuD"
+access_token_secret = 'li7JTCCX6VRRhwgzeRg5WFP3aetdPykDxDP5Ww9fgMR26'
+
+auth = tweepy.OAuthHandler(api_key, api_secret)
+
+auth.set_access_token(access_token, access_token_secret)
+
+api = tweepy.API(auth)
+
+
+results = []
+
+
+for tweet in tweepy.Cursor(api.search, q='#VA10').items(5):
+    results.append(tweet)
+

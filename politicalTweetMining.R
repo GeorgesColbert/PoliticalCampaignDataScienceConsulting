@@ -147,7 +147,10 @@ tc2_tdm <- TermDocumentMatrix(clean.tweet.Corpus.2)
 tc2_matrix <- as.matrix(tc2_tdm)
 
 colnames(tc2_matrix) <- c("negative Tweets", "Postive Tweets")
-comparison.cloud(tc2_matrix, max.words = 50, random.order = FALSE)
+comparison.cloud(tc2_matrix, max.words = 20, random.order = FALSE)
+
+
+
 
 
 ######### 
@@ -181,8 +184,8 @@ head(o)
  ################################### ################################### ################################### ###################################
 
  Stew_tweetdf_03_11 <- read_csv("Tim.tweetdf.03.11.csv")
- temp <- filter(Part3, screenName == 'CoreyStewartVA')
- write.csv(Part3, file =  "Tim.tweetdf.13.21.csv")
+ tem <- filter(VA.tweetdf, screenName == 'MikeWebbNow')
+ write.csv(Part3, file =  "Tim.tweetdf.July.20.30.csv")
  
  
  
@@ -195,18 +198,28 @@ head(o)
  #WordCloud of tweets using the hastage #VASen
  
  
- VA.tweet.3 <- searchTwitter('#vasen', n = 30000, lang = 'en', since = '2018-06-12', until = '2018-06-21')
+ VA.tweet.3 <- searchTwitter('from:timkaine', n = 15000, lang = 'en', since = '2018-08-03', until = '2018-08-14')
  
 
   Part1<-twListToDF(VA.tweet.3) 
   
-  Part3 <- rbind(Part1,Part2)
+  
+  Part2<-twListToDF(VA.tweet.3)
+  
+  
+  
+  PartA <- twListToDF(VA.tweet.3)
+  
+  
+  Part3 <- rbind(Part1,Part2,PartA)
   
   Part3 <- Part3[!duplicated(Part3),]
   
+  write.csv(Part3, file =  "Tim.tweetdf.August.03.13.csv")
+  
   VA.tweetdf <- twListToDF(VA.tweet.3)
  
- write.csv(VA.tweetdf, file =  "Nick.tweetdf.PrimDay.csv")
+ write.csv(VA.tweetdf, file =  "VA.tweetdf.August.03.13.csv")
  
  VA.tweetdf <- read_csv("VA.tweetdf.07.17.csv")
  VA.tweetdf.2 <- read_csv("VA.tweetdf.17.23.csv")
@@ -283,7 +296,7 @@ head(o)
  
  library(wordcloud)
  dark2 <- brewer.pal(6, "Dark2")
- wordcloud(names(freq), freq, min.freq = 200, rot.per=0.2, colors=dark2,random.order = F) 
+ wordcloud(names(freq), freq, min.freq = 40, rot.per=0.2, colors=dark2,random.order = F) 
  
 
  ### find tweets that use the word michael
